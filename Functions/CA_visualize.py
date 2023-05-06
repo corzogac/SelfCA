@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from ipywidgets import interact, IntSlider
 from CA_Read import read_ca_images
 
+
 def visualize_ca_images(ca_array):
     def plot_ca_image(time_step):
         plt.figure(figsize=(8, 8))
