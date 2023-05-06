@@ -26,7 +26,7 @@ To generate a sequence of 100 CA images with rule number 2 and grid size of 100x
 
 ```python
 generate_ca_images_rule(2, size=(100, 100), steps=100, output_file="ca_images2.nc")
-```python
+```
 
 
 ## Reading Cellular Automata Images from a netCDF File
@@ -35,7 +35,7 @@ The `read_ca_images` function reads Cellular Automata images stored in a netCDF 
 
 ### Function signature
 ```python
-def read_ca_images(input_file: str) -> np.ndarray:```python
+def read_ca_images(input_file: str) -> np.ndarray:```
 
 **Parameters**
 input_file: A string representing the path to the netCDF file containing the Cellular Automata images.
