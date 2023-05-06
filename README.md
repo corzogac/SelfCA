@@ -35,11 +35,13 @@ The `read_ca_images` function reads Cellular Automata images stored in a netCDF 
 
 ### Function signature
 ```python
-def read_ca_images(input_file: str) -> np.ndarray:```
+def read_ca_images(input_file: str) -> np.ndarray:
+```
 
 **Parameters**
 input_file: A string representing the path to the netCDF file containing the Cellular Automata images.
 Returns
+
 A NumPy array with the dimensions (time, x, y), containing the Cellular Automata images.
 
 #### Example usage
@@ -48,5 +50,5 @@ python
 filename = "ca_images2.nc"
 ca_array = read_ca_images(filename)
 print(ca_array.shape)
-```python
+```
 In the example above, the function read_ca_images reads the Cellular Automata images from the specified netCDF file and returns a NumPy array. The shape of the array is printed, showing the dimensions (time, x, y) of the images.
