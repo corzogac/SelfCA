@@ -52,3 +52,18 @@ ca_array = read_ca_images(filename)
 print(ca_array.shape)
 ```
 In the example above, the function read_ca_images reads the Cellular Automata images from the specified netCDF file and returns a NumPy array. The shape of the array is printed, showing the dimensions (time, x, y) of the images.
+
+
+## Interactive Visualization of Cellular Automata Images
+
+This repository also includes a function to visualize the Cellular Automata images interactively using `matplotlib` and `ipywidgets`. The function `visualize_ca_images` takes a NumPy array of Cellular Automata images (with dimensions: time, x, y) as input and displays the images with an interactive slider for selecting the time step.
+
+### Usage
+
+To visualize the Cellular Automata images interactively, first read the images from a netCDF file using the `read_ca_images` function, and then call the `visualize_ca_images` function with the resulting NumPy array:
+
+```python
+ca_array = read_ca_images("ca_images2.nc")
+visualize_ca_images(ca_array)
+```
+In this example, the read_ca_images function reads the Cellular Automata images from the specified netCDF file, and the visualize_ca_images function displays the images with an interactive slider for selecting the time step. The slider allows you to navigate through the time steps, and the corresponding image is displayed along with its time step label.
