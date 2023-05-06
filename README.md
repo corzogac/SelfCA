@@ -7,7 +7,7 @@ Self learning celular automata functions folder contains the tools needed to gen
 3. Visualization of the file with a sliding bar
 
 The first function is to create a CA binary sequence of images in Netcdf files
-## Cellular Automata Image Generator
+## 1. Cellular Automata Image Generator
 
 This Python script contains a function called `generate_ca_images_rule` that generates a sequence of cellular automata (CA) images based on a specified rule number. The generated images are saved in a NetCDF file format using the xarray library.
 
@@ -29,7 +29,7 @@ generate_ca_images_rule(2, size=(100, 100), steps=100, output_file="ca_images2.n
 ```
 
 
-## Reading Cellular Automata Images from a netCDF File
+## 2. Reading Cellular Automata Images from a netCDF File
 
 The `read_ca_images` function reads Cellular Automata images stored in a netCDF file and returns them as a NumPy array. The input to the function is the path to the netCDF file, and the output is a NumPy array with the dimensions (time, x, y), where `time` represents the time sequence of the Cellular Automata images.
 
@@ -54,7 +54,7 @@ print(ca_array.shape)
 In the example above, the function read_ca_images reads the Cellular Automata images from the specified netCDF file and returns a NumPy array. The shape of the array is printed, showing the dimensions (time, x, y) of the images.
 
 
-## Interactive Visualization of Cellular Automata Images
+## 3. Interactive Visualization of Cellular Automata Images
 
 This repository also includes a function to visualize the Cellular Automata images interactively using `matplotlib` and `ipywidgets`. The function `visualize_ca_images` takes a NumPy array of Cellular Automata images (with dimensions: time, x, y) as input and displays the images with an interactive slider for selecting the time step.
 
