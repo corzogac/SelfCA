@@ -1,0 +1,14 @@
+# Data and Scientific Computing
+numpy
+xarray
+scipy
+netcdf4
+scikit-learn
+
+# Visualization (for local testing)
+matplotlib
+ipywidgets
+
+# Web Backend
+fastapi
+uvicorn[standard]
