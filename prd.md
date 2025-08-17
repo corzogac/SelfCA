@@ -1,60 +1,45 @@
-1. Objective
-To create an interactive and educational web-based playground for researching Self-Learning Cellular Automata (SLCA). The framework will serve as a dual-purpose tool: an educational platform for learning CA fundamentals through classic examples and a research workbench for comparing advanced ML models (TensorFlow/CNNs) on complex spatial analysis tasks.
+# PRD (v4): "Automata Studio" Playground
 
-2. Core Features & User Stories
-(Features 1 and 2 for the backend and ML engine remain the same)
+## 1. Objective
 
-Feature 3: Interactive Research Dashboard & Playground (Revised)
-This feature redefines the web interface as a central, interactive hub for learning and experimentation.
+To create an interactive, web-based playground for researching and learning about Self-Learning Cellular Automata (SLCA). The application will guide users through the complete workflow—from environment generation to model training and visual analysis—using a clean, intuitive dashboard interface powered by a Python/FastAPI backend.
 
-User Story (Learner): "As a new user, I want to select 'Conway's Game of Life' from a list of classic examples to understand the basic principles of cellular automata before trying the advanced features."
+## 2. Project Modules & Status
 
-User Story (Researcher): "As a researcher, I need a dashboard with controls to configure my entire experiment. I want to select a problem type, choose my ML model from a dropdown, upload a target image, and tune parameters before running the simulation."
+### Backend (Complete)
+The core backend logic is implemented in three distinct Python modules:
+* **`environments`**: Generates simulation data (e.g., Game of Life, from images) and saves it in `.nc` format. Includes standardized reporting and visualization.
+* **`preprocessing`**: Takes simulation data and creates ML-ready datasets (`.nc`), handling normalization, data formatting (CNN/Tabular), and splitting, while saving key statistics.
+* **`models`**: Defines, trains, and evaluates a flexible CNN model. Saves the trained model (`.keras`) and generates advanced analysis visualizations (rule heatmaps, predictive animations).
 
-Functionality:
+### Frontend (In-Planning)
+The frontend will be a single-page web application that provides a user interface for the backend modules.
 
-Problem Selection: A main control panel where users can choose the task:
+## 3. Core Frontend Features (User Stories)
 
-Classic CA: (e.g., Conway's Game of Life, Rule 30).
+The dashboard will be organized into a logical workflow, likely through tabs or sequential sections.
 
-Learn from Image: The core SLCA feature.
+### Feature 1: The "Generator" Hub
+* **User Story:** As a user, I want to select a generator (e.g., "Game of Life"), set parameters like grid size and steps, and click a button to create and view a new simulation environment.
+* **Backend Hook:** This will trigger a FastAPI endpoint that runs the selected script from the `environments` module and makes the resulting animation and report available for download or viewing.
 
-Spatiotemporal Inpainting: The remote sensing application.
+### Feature 2: The "Preprocessor" Factory
+* **User Story:** As a user, I want to select a generated simulation file from a list, choose a data format ('CNN' or 'Tabular'), and click 'Process' to create a training dataset.
+* **Backend Hook:** Triggers an endpoint that runs the `preprocessing/create_dataset.py` script and reports the outcome.
 
-Parameter Controls: Interactive widgets (sliders, dropdowns) for setting up the experiment, mirroring the TensorFlow Playground's usability. This includes model selection, data input, and simulation settings.
+### Feature 3: The "Training Ground"
+* **User Story:** As a user, I want to select a processed dataset, configure basic model parameters (initially fixed, later expandable), and click 'Train' to build a model.
+* **User Story:** While the model trains, I want to see a live-updating chart of the training and validation accuracy/loss.
+* **Backend Hook:** Triggers the `models/cnn_trainer.py` script. Live updates will be pushed from the server to the client via WebSockets.
 
-Integrated Visualization: A multi-pane view that displays:
+### Feature 4: The "Analysis Lab"
+* **User Story:** As a user, I want to select a trained model and an original simulation file to see the side-by-side predictive animation, rule heatmap, and other analysis plots directly in my browser.
 
-The live CA simulation.
+## 4. Technical Stack (Revised)
 
-Real-time charts of model training metrics (loss, accuracy).
-
-The original source image or data for reference.
-
-4. Applications & Success Metrics (Updated)
-Educational Value: A new user can successfully launch the "Game of Life" simulation within their first minute on the site.
-
-Research Usability: A researcher can set up, run, and get visual feedback on a custom "Learn from Image" experiment entirely through the dashboard interface.
-
-(Other metrics remain the same)
-
-This "Playground" concept gives the project a much clearer identity and a more engaging user experience. It perfectly balances the goals of education and advanced research.
-
-📁 File Name and Location
-File Name: PRD.md
-This is a standard and clean convention. Using the .md extension means it will be correctly formatted as Markdown on GitHub, making it easy to read.
-
-Location: The root of your project folder (e.g., SelfCA/PRD.md).
-Placing it here ensures it's one of the first things a new contributor sees, alongside your README.md. For larger projects, you might create a docs/ folder, but for now, the root is perfect for visibility.
-
-Staring project structure should now look something like this:
-
-SelfCA/
-├── .git/
-├── venv/
-├── CA_Generate.py
-├── CA_Read.py
-├── CA_visualize.py
-├── PRD.md
-├── README.md
-└── requirements.txt
+* **Backend:** Python, FastAPI, Uvicorn
+* **Data/ML:** Xarray, NumPy, TensorFlow/Keras
+* **Frontend:** HTML5, CSS3, JavaScript
+* **JS Framework (Recommended):** Vue.js or React for managing the dashboard's complex state.
+* **JS Libraries:** Chart.js (for training graphs), p5.js or HTML Canvas API (for animations).
+* **Real-time Communication:** WebSockets (for live training feedback).
